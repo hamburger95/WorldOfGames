@@ -39,9 +39,5 @@ def display_rand_list_to_user(rand_list):
     image_numpy_format = np.asarray(image_itself)
     plt.imshow(image_numpy_format)
     plt.draw()
-    plt.pause(0.7)  # pause for 0.7 seconds
+    plt.pause(2)  # pause how many seconds
     plt.close()
-
-
-
-
