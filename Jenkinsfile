@@ -5,8 +5,11 @@ node{
     stage("1. Checkout"){
         git "https://github.com/hamburger95/WorldOfGames.git"
     }
-    stage("2. docker-compose"){
+    stage("2###. docker-compose"){
         sh label: '', script: 'pwd'
         sh label: '', script: 'ls'
+    }
+    stage("2. docker build"){
+        docker build .
     }
 }
