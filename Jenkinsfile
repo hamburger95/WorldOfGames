@@ -10,6 +10,6 @@ node{
         sh label: '', script: 'ls'
     }
     stage("2. docker build"){
-        docker build .
+        sh label: '', script: 'docker build .' 
     }
 }
