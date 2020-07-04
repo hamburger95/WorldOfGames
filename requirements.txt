@@ -1,5 +1,2 @@
 flask
-selenium
-numpy
-Pillow
-matplotlib
+
