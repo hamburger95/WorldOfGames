@@ -7,5 +7,6 @@ node{
     }
     stage("2. docker-compose"){
         sh label: '', script: 'pwd'
+        sh label: '', script: 'ls'
     }
 }
