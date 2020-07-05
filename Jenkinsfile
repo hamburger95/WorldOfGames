@@ -1,12 +1,8 @@
-pipeline {
-    agent { dockerfile true }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'pwd'
-                sh 'ls'
-                sh 'cat Jenkinsfile'
-            }
-        }
+node{
+    stage("1. Checkout"){
+        git "https://github.com/hamburger95/WorldOfGames.git"
+    }
+    stage("2. docker build"){
+        sh 'sudo curl -sSL https://get.docker.com/ | sh'
     }
 }
