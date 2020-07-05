@@ -4,9 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh 'python --version'
-            }
+               script {
+                    docker.build registry + ":$BUILD_NUMBER"
+               }
+           }
         }
         stage('Test') {
             steps {
