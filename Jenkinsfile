@@ -5,5 +5,6 @@ node{
     stage("2. docker build"){
         sh 'sudo curl -sSL https://get.docker.com/ | sh'
         sh 'ls'
+        sh 'pwd'
     }
 }
