@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'python --version'
-                sh 'docker-machine ls'
+                sh 'docker-machine start'
             }
         }
         stage('Test') {
