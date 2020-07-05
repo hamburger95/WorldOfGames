@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'python --version'
-                sh 'docker-machine start'
+                sh 'apt-get -y install docker-ce'
             }
         }
         stage('Test') {
