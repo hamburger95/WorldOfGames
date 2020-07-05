@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                sh 'pwd'
+                sh 'ls'
+                sh 'cat Jenkinsfile'
             }
         }
     }
