@@ -5,8 +5,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'node --version'
-                sh 'svn --version'
                 sh 'python --version'
             }
         }
