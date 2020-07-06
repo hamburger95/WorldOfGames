@@ -1,26 +1,10 @@
 pipeline {
-    agent { label 'dockerserver' } // if you don't have other steps, 'any' agent works
+    agent { dockerfile true }
     stages {
-        stage('Back-end') {
-            agent {
-                docker {
-                  label 'dockerserver'  // both label and image
-                  image 'maven:3-alpine'
-                }
-            }
+        stage('Test') {
             steps {
-                sh 'mvn --version'
-            }
-        }
-        stage('Front-end') {
-            agent {
-              docker {
-                label 'dockerserver'  // both label and image
-                image 'node:7-alpine' 
-              }
-            }
-            steps {
-                sh 'docker.image("bclaster/jenkins-node:1.0").pull()'
+                sh 'node --version'
+                sh 'svn --version'
             }
         }
     }
