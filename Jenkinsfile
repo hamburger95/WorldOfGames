@@ -1,12 +1,12 @@
-podTemplate(label: 'ubuntu-k8s', containers: [
-    containerTemplate(name: 'ubuntu', image: 'ubuntu:16.04', ttyEnabled: true, 
-        command: 'cat')    
-  ]) {
-    node('ubuntu-k8s') {
-        container('ubuntu') {
-            stage('Run Command') {
-                sh 'cat /etc/issue'
-            }
+stage ("Get Source") {
+        // run a command to get the source code download
+        myImg.inside('-v /home/git/repos:/home/git/repos') {
+            sh "rm -rf gradle-greetings"
+            sh "git clone --branch test /home/git/repos/gradle-greetings.git"
         }
     }
-}
+    stage ("Run Build") {
+        myImg.inside() {
+            sh "cd gradle-greetings && gradle -g /tmp clean build -x test"
+        }
+    }
