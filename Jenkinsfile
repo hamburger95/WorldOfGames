@@ -1,31 +1,12 @@
-node {
-
-    stage('Initialize')
-    {
-        def dockerHome = tool 'MyDocker'
-        def mavenHome  = tool 'MyMaven'
-        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-    }
-
-    stage('Checkout') 
-    {
-        checkout scm
-    }
-
-      stage('Build') 
-           {
-            sh 'uname -a'
-            sh 'mvn -B -DskipTests clean package'  
-          }
-
-        stage('Test') 
-        {
-            //sh 'mvn test'
-            sh 'ifconfig' 
+podTemplate(label: 'ubuntu-k8s', containers: [
+    containerTemplate(name: 'ubuntu', image: 'ubuntu:16.04', ttyEnabled: true, 
+        command: 'cat')    
+  ]) {
+    node('ubuntu-k8s') {
+        container('ubuntu') {
+            stage('Run Command') {
+                sh 'cat /etc/issue'
+            }
         }
-
-        stage('Deliver') 
-          {
-                sh 'bash ./jenkins/deliver.sh'
-        }
+    }
 }
