@@ -20,7 +20,7 @@ pipeline {
               }
             }
             steps {
-                docker.image("bclaster/jenkins-node:1.0").pull()
+                sh 'docker.image("bclaster/jenkins-node:1.0").pull()'
             }
         }
     }
