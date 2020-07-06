@@ -1,12 +1,27 @@
-stage ("Get Source") {
-        // run a command to get the source code download
-        myImg.inside('-v /home/git/repos:/home/git/repos') {
-            sh "rm -rf gradle-greetings"
-            sh "git clone --branch test /home/git/repos/gradle-greetings.git"
+pipeline {
+    agent { label 'dockerserver' } // if you don't have other steps, 'any' agent works
+    stages {
+        stage('Back-end') {
+            agent {
+                docker {
+                  label 'dockerserver'  // both label and image
+                  image 'maven:3-alpine'
+                }
+            }
+            steps {
+                sh 'mvn --version'
+            }
+        }
+        stage('Front-end') {
+            agent {
+              docker {
+                label 'dockerserver'  // both label and image
+                image 'node:7-alpine' 
+              }
+            }
+            steps {
+                sh 'node --version'
+            }
         }
     }
-    stage ("Run Build") {
-        myImg.inside() {
-            sh "cd gradle-greetings && gradle -g /tmp clean build -x test"
-        }
-    }
+}
