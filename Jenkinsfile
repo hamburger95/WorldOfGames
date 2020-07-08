@@ -1,5 +1,12 @@
-node{
-    stage('SCM checkout'){
-    git https://github.com/hamburger95/WorldOfGames.git
+pipeline {
+    agent {
+        docker { image 'node:14-alpine' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
     }
 }
