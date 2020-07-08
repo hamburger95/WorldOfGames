@@ -1,5 +1,4 @@
 pipeline {
-    def app
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
         git https://github.com/hamburger95/WorldOfGames.git
@@ -17,9 +16,6 @@ pipeline {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
         sh 'python e2e.py' 
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
     }
 
     stage('Push image') {
