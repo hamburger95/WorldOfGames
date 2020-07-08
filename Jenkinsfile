@@ -1,10 +1,5 @@
-pipeline {
-    agent { dockerfile true }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'docker.build("runtestdevops/node")'
-            }
-        }
+node{
+    stage('SCM checkout'){
+    git https://github.com/hamburger95/WorldOfGames.git
     }
 }
