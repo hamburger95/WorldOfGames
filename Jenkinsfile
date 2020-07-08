@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                docker.build("runtestdevops/node")
+                sh 'docker.build("runtestdevops/node")'
             }
         }
     }
