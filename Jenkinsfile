@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout git repo') {
             steps {
                 sh 'echo "step 1: Checkout git repo"'
-                sh 'git https://github.com/hamburger95/WorldOfGames.git'
+                git https://github.com/hamburger95/WorldOfGames.git
             }
         }
         stage('Build') {
