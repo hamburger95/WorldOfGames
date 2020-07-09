@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'echo "step 3: run docker ."'
                 sh 'IMAGE_ID=$(docker images  --format "{{.ID}}")'
-                sh 'docker run -p 5000:5000 $IMAGE_ID'
+                sh 'docker run -p 5000:5000 ${IMAGE_ID}'
             }
         }
 
