@@ -9,14 +9,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo "step 2: build docker ."'
+                sh 'echo "step 2: build docker "'
                 sh  'docker build .'
             }
         }
                 stage('Run') {
             steps {
-                sh 'echo "step 3: run docker ."'
-                sh 'IMAGE_ID=$(docker images  --format "{{.ID}}") && docker run -p 5000:5000 -t $IMAGE_ID'
+                sh 'echo "step 3: run docker "'
+                sh 'IMAGE_ID=$(docker images | awk '{print $1}' | awk 'NR==2')
+                sh 'docker run -p 5000:5000 -t $IMAGE_ID'
             }
         }
 
