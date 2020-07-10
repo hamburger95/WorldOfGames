@@ -16,8 +16,8 @@ pipeline {
                 stage('Run') {
             steps {
                 sh 'echo "step 3: run docker "'
-                sh "IMAGE_ID=$(docker images | awk '{print ${3}' | awk 'NR==2')"
-                sh 'docker run -p 5000:5000 -t $IMAGE_ID'
+                IMAGE_ID=$(docker images | awk '{print $3}' | awk 'NR==2')
+                docker run -p 5000:5000 -t $IMAGE_ID
             }
         }
 
