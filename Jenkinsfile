@@ -16,9 +16,7 @@ pipeline {
         stage('3. Run') {
             steps {
                 sh 'echo "step 3: run docker "'
-                sh '''docker run -d -p 5000:5000 -t $(docker images | awk '{print $3}' | awk 'NR==2')'''
-                sh '''docker exec -it $(docker images | awk '{print $3}' | awk 'NR==2') sh pwd'''
-                sh 'pwd'
+                sh '''docker run --mount type=bind,source=$(pwd)/Scores.txt,target=/code/Scores.txt -d -p 5000:5000 -t $(docker images | awk '{print $3}' | awk 'NR==2')'''
             }
         }
         stage('4. Test') {
