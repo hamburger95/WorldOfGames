@@ -21,7 +21,8 @@ pipeline {
         }
         stage('4. Test') {
             steps {
-                sh 'python --version'
+                sh 'echo docker ps --format "{{.Names}}"'
+                sh 'python3 e2e.py'
             }
         }
 
