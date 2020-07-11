@@ -62,8 +62,8 @@ class TestTemplate(unittest.TestCase):
         try:
             site_url = "http://127.0.0.1:5000/"
             self.driver.get(site_url)
-            el = self.driver.find_element_by_class_name('btn-header')
-            el.click()
+            s_check = int(self.driver.find_element_by_id("score").text)
+            print(s_check)
         except NoSuchElementException as ex:
             self.fail(ex.msg)
 
