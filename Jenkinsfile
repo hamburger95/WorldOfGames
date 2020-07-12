@@ -31,8 +31,8 @@ pipeline {
         stage('5. Push image to dockerhub') {
             steps {
                 sh 'docker ps'
-                sh '$ docker commit docker-app docker-image:latest'
                 sh 'docker login'
+                sh '$ docker commit docker-app docker-image:latest'
                 sh 'docker tag docker-image:latest idodockerhub/docker-image:latest'
                 sh 'docker push idodockerhub/docker-image:latest'
             }
