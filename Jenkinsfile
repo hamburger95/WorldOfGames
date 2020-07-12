@@ -24,7 +24,6 @@ pipeline {
         stage('4. Test') {
             steps {
                 sh 'docker ps'
-                sh 'python e2e.py'
                 sh 'docker exec docker-app pwd'
                 sh 'docker exec docker-app python e2e.py'
             }
