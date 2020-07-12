@@ -10,8 +10,12 @@ pipeline {
         stage('2. Build') {
             steps {
                 sh 'echo "step 2: build docker .."'
-                sh 'if [$(docker ps -a -q) <> null] then docker stop $(docker ps -a -q) fi'
-                sh 'if [$(docker ps -a -q) <> null] then docker rm $(docker ps -a -q) fi'
+                sh '''if [ $(docker ps -a -q) > 0 ]
+                      then docker stop $(docker ps -a -q)
+                      fi'''
+                sh '''if [ $(docker ps -a -q) > 0 ]
+                      then docker rm $(docker ps -a -q)
+                      fi'''
                 sh 'docker build -t docker-image .'
             }
         }
