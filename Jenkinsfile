@@ -37,6 +37,7 @@ pipeline {
                 sh 'docker push idodockerhub/docker-image:latest'
                 sh 'docker stop $(docker ps -a -q)'
                 sh 'docker rm $(docker ps -a -q)'
+                sh 'docker ps'
             }
         }
 
