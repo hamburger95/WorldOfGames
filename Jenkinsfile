@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh 'docker ps'
                 sh 'python e2e.py'
-                sh 'docker exec docker-app sh && python e2e.py'
+                sh 'docker exec docker-app sh && pwd && python e2e.py'
             }
         }
 
