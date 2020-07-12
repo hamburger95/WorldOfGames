@@ -1,0 +1,12 @@
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker build -t docker-image .
+docker run --mount type=bind,source=$(pwd)/Scores.txt,target=/code/Scores.txt -d --name docker-app -p 5000:5000 -t $(docker images | awk '{print $3}' | awk 'NR==2')
+docker ps
+docker exec docker-app pwd
+docker exec docker-app python e2e.py
+docker ps
+docker login
+docker commit docker-app docker-image:latest
+docker tag docker-image:latest idodockerhub/docker-image:latest
+docker push idodockerhub/docker-image:latest
