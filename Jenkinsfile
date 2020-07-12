@@ -1,7 +1,7 @@
 pipeline {
 environment {
 registry = "idodockerhub/worldofgames"
-registryCredential = '9c6009ef-3e04-410e-bf4c-4d7abc4138fc'
+registryCredential = 'dockerhub'
 dockerImage = ''
 }
 agent any
