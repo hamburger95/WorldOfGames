@@ -35,6 +35,8 @@ pipeline {
                 sh 'docker commit docker-app docker-image:latest'
                 sh 'docker tag docker-image:latest idodockerhub/docker-image:latest'
                 sh 'docker push idodockerhub/docker-image:latest'
+                sh 'docker stop $(docker ps -a -q)'
+                sh 'docker rm $(docker ps -a -q)'
             }
         }
 
