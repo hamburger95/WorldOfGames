@@ -10,7 +10,9 @@ pipeline {
         stage('2. Build') {
             steps {
                 sh 'echo "step 2: build docker "'
-                sh  'docker build .'
+                sh 'docker stop $(docker ps -a -q)'
+                sh 'docker rm $(docker ps -a -q)'
+                sh 'docker build .'
             }
         }
         stage('3. Run') {
