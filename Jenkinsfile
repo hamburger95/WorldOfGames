@@ -1,6 +1,6 @@
 pipeline {
 environment {
-registry = "idodockerhub/WorldOfGames"
+registry = "idodockerhub/worldofgames"
 registryCredential = 'dockerhub_id'
 dockerImage = ''
 }
